@@ -1,10 +1,18 @@
-<?php
+//<?php
 /**
- * @name prevnextPage
- * @author Gorbarov Iliya at gorbarov.ru
- * @version 1.1
- * @desc Создает ссылки на предыдущую и следующую страницы
+ * prevnextPage
+ * 
+ * Создает ссылки на предыдущую и следующую страницы
  *
+ * @category    snippet
+ * @version     1.1
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
+ * @internal    @properties
+ * @internal    @modx_category Navigation
+ * @internal    @installset base, sample
+ */
+
+/**
  * Сниппет устанавливает плейсхолдеры [+pnp_prev+] [+pnp_next+]
  *
  * В плейсхолдерах находятся ссылки на предыдущую и следующую страницы, в зависимости от настроек сниппета
@@ -24,7 +32,6 @@
  * &directOutputTpl - Шаблоны прямого вывода, строка, по умолчанию, [+prev+] | [+next+]
  *
  * Пример самого "обычного вызова": [[prevnextPage? &directOutput=`1`]]
- *
  */
 
 if (!isset($folderId)) $folderId = 'parent';
@@ -87,4 +94,3 @@ if ($curDoc['parent'] == $folderId) {
         if (isset($prev)) $modx->setPlaceholder($id.'prev',$rPrev);
     }
 }
-?>
