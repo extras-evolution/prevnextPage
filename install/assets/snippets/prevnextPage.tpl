@@ -1,3 +1,4 @@
+<?php
 //<?php
 /**
  * prevnextPage
@@ -5,7 +6,7 @@
  * Создает ссылки на предыдущую и следующую страницы
  *
  * @category    snippet
- * @version     1.1
+ * @version     1.2
  * @license     http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @properties
  * @internal    @modx_category Navigation
@@ -35,6 +36,7 @@
  */
 
 if (!isset($folderId)) $folderId = 'parent';
+if (!isset($curId)) $curId = $modx->documentIdentifier;
 if (!isset($sortBy)) $sortBy = 'menuindex';
 if (!isset($sortDir)) $sortDir = 'ASC';
 if (!isset($showHidden)) $showHidden = 0;
@@ -57,7 +59,7 @@ if (!function_exists('parseString')) {
     };
 }
 
-$curId = $modx->documentIdentifier;
+
 if ($folderId == 'parent') $folderId = array_pop($modx->getParentIds($curId,1));
 
 $docs = $modx->getDocumentChildren ($folderId, 1, 0, 'id, pagetitle, parent', 'hidemenu = '.$showHidden, $sortBy, $sortDir, '');
@@ -94,3 +96,4 @@ if ($curDoc['parent'] == $folderId) {
         if (isset($prev)) $modx->setPlaceholder($id.'prev',$rPrev);
     }
 }
+?>
